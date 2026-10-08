@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "lexer.h"
 
 bool has_cex_ext(const char *f_name) 
 {
@@ -68,6 +69,9 @@ int main(int argc, char *argv[])
 
 	char *buf = read_cex_file(argv[1]);
 	if (!buf) return 1;
+
+	Lexer l = lexer_init(buf);
+	lexer_free(&l);
 
 	return 0;
 }
