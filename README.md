@@ -1,4 +1,8 @@
-# cex
+<p align="center">
+    <img src="/img/logo.png">
+</p>
+
+<h1 align="center">cex</h1>
 
 Expression Oriented Language (EOL) written in **C** that strictly supports **arithmetic only**. 
 
