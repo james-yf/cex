@@ -62,12 +62,13 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	if (!has_cex_ext(argv[1])) { 
+	const char *f_name = argv[1];
+	if (!has_cex_ext(f_name)) { 
 		fprintf(stderr, "Error: file must be in format <name.cex>\n");
 		return 1; 
 	}
 
-	char *buf = read_cex_file(argv[1]);
+	char *buf = read_cex_file(f_name);
 	if (!buf) return 1;
 
 	Lexer l = lexer_init(buf);
