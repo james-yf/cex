@@ -14,8 +14,8 @@ typedef enum TokenType {
 } TokenType;
 
 typedef struct Token {
+	TokenType type;
 	union {
-		TokenType type;
 		double val;
 	};
 } Token;
