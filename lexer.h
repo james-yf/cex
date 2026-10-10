@@ -28,6 +28,5 @@ typedef struct Lexer {
 } Lexer;
 
 Lexer lexer_init(const char *src);
-void lexer_free(Lexer *l);
 
 #endif

@@ -72,7 +72,8 @@ int main(int argc, char *argv[])
 	if (!buf) return 1;
 
 	Lexer l = lexer_init(buf);
-	lexer_free(&l);
+
+	free(buf);
 
 	return 0;
 }
