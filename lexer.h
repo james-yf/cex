@@ -1,22 +1,7 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-typedef enum TokenType {
-	PLUS,
-	MINUS,
-	TIMES,
-	DIVIDE,
-	MODULO,
-	EXPONENT,
-	LPAREN,
-	RPAREN,
-	NUMBER 
-} TokenType;
-
-typedef struct Token {
-	TokenType type;
-	double val;
-} Token;
+#include "token.h"
 
 typedef struct Lexer {
 	const char *src;
