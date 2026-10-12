@@ -28,4 +28,7 @@ typedef struct Token {
 	size_t lexeme_len;
 } Token;
 
+void print_token(Token t);
+const char *token_type_to_string(TokenType tt); 
+
 #endif
