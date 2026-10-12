@@ -10,7 +10,9 @@ typedef enum TokenType {
 	EXPONENT,
 	LPAREN,
 	RPAREN,
-	NUMBER 
+	NUMBER, 
+	Eof,
+	INVALID
 } TokenType;
 
 typedef struct Token {
