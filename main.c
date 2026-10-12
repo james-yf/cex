@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "lexer.h"
 
-bool has_cex_ext(const char *f_name) 
+static bool has_cex_ext(const char *f_name) 
 {
 	size_t l = strlen(f_name);
 	if (l < 5) return false;
@@ -13,7 +13,7 @@ bool has_cex_ext(const char *f_name)
 	return false;
 }
 
-char *read_cex_file(const char *f_name) {
+static char *read_cex_file(const char *f_name) {
 	FILE *fp = fopen(f_name, "rb");
 	if (!fp) {
 		perror("Error opening file");
