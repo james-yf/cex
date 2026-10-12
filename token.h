@@ -1,6 +1,8 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
+#include <stddef.h>
+
 typedef enum TokenType {
 	PLUS,
 	MINUS,
@@ -17,7 +19,8 @@ typedef enum TokenType {
 
 typedef struct Token {
 	TokenType type;
-	double val;
+	const char *lexeme_start;
+	size_t lexeme_len;
 } Token;
 
 #endif
