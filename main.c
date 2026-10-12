@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "lexer.h"
+#include "token.h"
 
 static bool has_cex_ext(const char *f_name) 
 {
@@ -72,6 +73,13 @@ int main(int argc, char *argv[])
 	if (!buf) return 1;
 
 	Lexer l = lexer_init(buf);
+
+	printf("CONTENT:\n|\nv\n%s\n", buf);
+	for (;;) {
+		Token t = lexer_get_next_token(&l);
+		print_token(t);
+		if (t.type == Eof) break;
+	}
 
 	free(buf);
 
