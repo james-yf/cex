@@ -3,18 +3,23 @@
 
 #include <stddef.h>
 
+#define TOKEN_TYPE(X) \
+    X(PLUS)                \
+    X(MINUS)               \
+    X(TIMES)               \
+    X(DIVIDE)              \
+    X(MODULO)              \
+    X(EXPONENT)            \
+    X(LPAREN)              \
+    X(RPAREN)              \
+    X(NUMBER)              \
+    X(Eof)                 \
+    X(INVALID)
+	
 typedef enum TokenType {
-	PLUS,
-	MINUS,
-	TIMES,
-	DIVIDE,
-	MODULO,
-	EXPONENT,
-	LPAREN,
-	RPAREN,
-	NUMBER, 
-	Eof,
-	INVALID
+	#define AS_ENUM(token_type) token_type,  
+	TOKEN_TYPE(AS_ENUM)	
+	#undef AS_ENUM	
 } TokenType;
 
 typedef struct Token {
