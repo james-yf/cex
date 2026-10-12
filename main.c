@@ -56,11 +56,37 @@ static char *read_cex_file(const char *f_name) {
 	return buf; 
 }
 
+static void lex_and_print(const char *src)
+{
+	Lexer l = lexer_init(src);
+	for (;;) {
+		Token t = lexer_get_next_token(&l);
+		print_token(t);
+		if (t.type == Eof) break;
+	}
+}
+
+static void run_repl(void) 
+{
+	char buf[1024];
+	printf(">> ");
+	while (fgets(buf, sizeof(buf), stdin)) {
+		lex_and_print(buf);
+		printf("\n");
+		printf(">> ");
+	}
+}
+
 int main(int argc, char *argv[]) 
 {
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <name.cex>\n", argv[0]);
+	if (argc > 2) {
+		fprintf(stderr, "Usage: %s [name.cex]\n", argv[0]);
 		return 1;
+	}
+
+	if (argc == 1) {
+		run_repl();
+		return 0;
 	}
 
 	const char *f_name = argv[1];
@@ -72,14 +98,8 @@ int main(int argc, char *argv[])
 	char *buf = read_cex_file(f_name);
 	if (!buf) return 1;
 
-	Lexer l = lexer_init(buf);
-
 	printf("CONTENT:\n|\nv\n%s\n", buf);
-	for (;;) {
-		Token t = lexer_get_next_token(&l);
-		print_token(t);
-		if (t.type == Eof) break;
-	}
+	lex_and_print(buf);
 
 	free(buf);
 
